@@ -2,18 +2,18 @@ import { Card } from '@/components';
 import CardIm from '../components/Card/card.png';
 import Button from '@/components/Button/Button';
 import LikeIcon from '../components/CardCategory/like.svg';
+import { get } from 'http';
+import { getPost } from '@/api/posts';
+import { TopPageComponent } from '@/components/TopPageComponent/TopPageComponent';
 
-export default function Home() {
-  const amountCards = [1, 2, 3];
+export default async function Home() {
+  const posts = await getPost();
+
   return (
-    <>
-      {amountCards.map((card) => (
-        <Card image={CardIm} key={card}></Card>
-      ))}
-      {/* <Card image={CardIm}>Card text</Card> */}
-      <Button appearance='ghost'>
-        <LikeIcon />
-      </Button>
-    </>
+    //   <Button appearance='ghost'>
+    //     <LikeIcon />
+    //   </Button>
+    //  </>
+    <TopPageComponent posts={posts.props} />
   );
 }
